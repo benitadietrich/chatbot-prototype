@@ -25,3 +25,32 @@
 #         dispatcher.utter_message(text="Hello World!")
 #
 #         return []
+
+from typing import Text, List, Any, Dict
+
+from rasa_sdk import Tracker, FormValidationAction
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.types import DomainDict
+
+
+class ValidatePersonalityForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_personality_form"
+
+    def validate_critical_thinking(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate critical thinking value."""
+
+        intent = tracker.latest_message.get("intent", {}).get("name")
+
+        if intent == "intent_critical_good"  :
+            return {"critical_thinking": "good"}
+        else:
+            # validation failed, set this slot to None so that the
+            # user will be asked for the slot again
+            return {"critical_thinking": "bad"}

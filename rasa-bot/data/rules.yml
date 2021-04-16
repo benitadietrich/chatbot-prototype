@@ -11,3 +11,22 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Activate form
+  steps:
+  - intent: start_form
+  - action: personality_form
+  - active_loop: personality_form
+
+- rule: Submit form
+  condition:
+  # Condition that form is active.
+  - active_loop: personality_form
+  steps:
+  # Form is deactivated
+  - action: personality_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: utter_affirm

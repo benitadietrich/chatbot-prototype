@@ -1,93 +1,91 @@
 version: "2.0"
-
 nlu:
+- intent: help
+  examples: |
+    - Ich brauche deine Hilfe
+    - Ich weiß nicht ob ein Duales Studium für mich geeignet ist.
+    - Kannst du mir helfen?
+    - Kannst du mir bei der Beratung helfen?
+    - Ist ein duales Studium das richtige für mich?
+    - Ich brauche Hilfe
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-    - yo
-
+    - Hi
+    - Hallo
+    - Hey
+    - Guten Tag
+    - Guten Morgen
+    - Guten Abend
+    - Morgen
+    - Lass uns starten
 - intent: goodbye
   examples: |
-    - good afternoon
-    - cu
-    - good by
-    - cee you later
-    - good night
+    - Tschüss
+    - Bis bald
+    - Auf Wiedersehen
+    - Bye
     - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-
+    - Schönen Tag
+    - Bis später
 - intent: affirm
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-
+    - Ja
+    - Natürlich
+    - Klar
+    - Hört sich gut an
+    - Korrekt
+    - Ok
 - intent: deny
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
+    - Nein
+    - Niemals
+    - Ich denke nicht
+    - Das gefällt mir nicht
+    - Auf keinen Fall
+    - Nicht wirklich
+- intent: stop
+  examples: |
+    - Ich möchte nicht mehr weitermachen
+    - Stopp
+    - Das reicht
 - intent: mood_great
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
+    - Perfekt
+    - Grossartig
+    - Toll
+    - wunderbar
+    - Mir geht es sehr gut
+    - Mir geht es gut
+    - Mir geht es perfekt
+    - Ich werde die Welt retten
+    - Gut
+    - Sehr gut
 - intent: mood_unhappy
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
+    - Mein Tag war schrecklich
+    - Ich bin traurig
+    - Nicht gut
+    - beschissen
+    - scheiße
+    - traurig
+    - sehr traurig
+    - unglücklich
+    - nicht gut
+    - nicht sehr gut
+    - ich bin krank
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - Bist du ein Bot?
+    - Bist du ein Mensch?
+    - Spreche ich mit einem Bot?
+    - Spreche ich mit einem Mensch?
+- intent: critical_good
+  examples: |
+    - Ich setze die Kritik um
+- intent: critical_bad
+  examples: |
+    - Ich werde sauer
+
+- intent: start_form
+  examples: |
+    -Ja

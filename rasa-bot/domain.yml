@@ -1,34 +1,83 @@
-version: "2.0"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+version: '2.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- help
+- critical_bad
+- greet
+- affirm
+- goodbye
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- stop
+- critical_good
+slots:
+  critical_thinking:
+    type: text
+    influence_conversation: true
+responses:
+  utter_greet:
+  - text: Hey! Wie gehts dir?
+  - text: Guten Tag, wie geht es dir?
+  - text: Hallo, wie war dein Tag?
+  utter_cheer_up:
+  - text: 'Hier ist etwas um dich aufzumuntern:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Hat es dir geholfen?
+  utter_happy:
+  - text: Super, mach weiter so!
+  - text: Toll, das freut mich sehr
+  utter_goodbye:
+  - text: Auf Wiedersehen
+  - text: Tschüss
+  - text: Bis Bald
+  utter_iamabot:
+  - text: Ich bin ein Bot und wurde mit Rasa entwickelt.
+  utter_help:
+  - text: Ich kann dir bei der Studienberatung helfen. Hierzu musst du mir einige Fragen beantworten, hast du ein paar Minuten Zeit?
+  - text: Ich helfe dir gerne, du musst nur einige Fragen beantworten. Hast du ein paar Minuten Zeit?
+  utter_break:
+  - text: Du kannst jederzeit abbrechen und später zurückkehren.
+  utter_ask_continue:
+  - text: Möchtest du abbrechen?
+  utter_affirm:
+  - text: Okay
+  utter_ask_personality_form_critical_thinking:
+  - text: Du erledigst eine Aufgabe sehr gewissenhaft, dein Bertreuer kritisiert deine Arbeit jedoch. Wie gehst du damit um?
+  utter_critical:
+  - text: Während des Studiums wirst du unterschiedlichen Lehrmeinungen und manchmal auch widersprüchlichen Aussagen und Einschätzungen begegnen. Deshalb ist es besonders wichtig eine eigene Meinung zu bilden.
+  utter_critical_bad:
+  - text: Um deine Kritikfähigkeit zu verbessern, versuche dich in die Position deines gegenübers hineinzudenken und sie zu verstehen. Hinterfrage neue Informationen und bilde dir mit Hilfe von Fachliteratur eine eigene Meinung.
+  utter_critical_good:
+  - text: Du scheinst gut mit Kritik umgehen zu können. Wichtig ist für das Studium besonders das Hinterfragen von Infromationen und das Bilden einer Meinung mit Hilfe von Fachliteratur. Damit kannst du später deine Argumente wissenschaftlich untermauern.
+  utter_sad:
+  - text: :(
+actions:
+- utter_affirm
+- utter_ask_continue
+- utter_ask_personality_form_critical_thinking
+- utter_break
+- utter_cheer_up
+- utter_critical
+- utter_critical_bad
+- utter_critical_good
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_help
+- utter_iamabot
+- utter_sad
+- validate_personality_form
+forms:
+  personality_form:
+    critical_thinking:
+    - type: from_trigger_intent
+      value: value
+      intent:
+      - intent_critical_good
+      - intent_critical_bad
