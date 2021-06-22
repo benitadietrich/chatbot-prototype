@@ -3,14 +3,15 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- help
-- critical_bad
 - greet
-- affirm
+- critical_bad
 - goodbye
+- affirm
+- help
+- mood_unhappy
+- start_form
 - deny
 - mood_great
-- mood_unhappy
 - bot_challenge
 - stop
 - critical_good
@@ -75,9 +76,10 @@ actions:
 - validate_personality_form
 forms:
   personality_form:
-    critical_thinking:
-    - type: from_trigger_intent
-      value: value
-      intent:
-      - intent_critical_good
-      - intent_critical_bad
+    required_slots:
+     critical_thinking:
+     - type: from_intent
+       value: value
+       intent:
+         - intent_critical_good
+         - intent_critical_bad

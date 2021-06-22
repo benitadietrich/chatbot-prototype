@@ -8,6 +8,7 @@ nlu:
     - Kannst du mir bei der Beratung helfen?
     - Ist ein duales Studium das richtige für mich?
     - Ich brauche Hilfe
+    - Bitte hilf mir
 - intent: greet
   examples: |
     - Hi
@@ -73,6 +74,7 @@ nlu:
     - nicht gut
     - nicht sehr gut
     - ich bin krank
+    - Beschissen
 - intent: bot_challenge
   examples: |
     - Bist du ein Bot?
@@ -85,7 +87,7 @@ nlu:
 - intent: critical_bad
   examples: |
     - Ich werde sauer
-
+    - Ich weine
 - intent: start_form
   examples: |
-    -Ja
+    - Los gehts

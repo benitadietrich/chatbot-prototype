@@ -46,6 +46,7 @@ class ValidatePersonalityForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate critical thinking value."""
 
+        required_slots = ["critical_thinking"]
         intent = tracker.latest_message.get("intent", {}).get("name")
 
         if intent == "intent_critical_good"  :
@@ -53,4 +54,4 @@ class ValidatePersonalityForm(FormValidationAction):
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
-            return {"critical_thinking": "bad"}
+            return {"critical_thinking": None}

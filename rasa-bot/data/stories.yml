@@ -86,3 +86,26 @@ stories:
     - requested_slot: critical_thinking
   - intent: critical_bad
   - action: utter_critical
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - intent: help
+  - action: utter_help
+  - action: utter_break
+  - intent: start_form
+  - action: personality_form
+  - active_loop: personality_form
+  - slot_was_set:
+    - requested_slot: critical_thinking
+  - intent: critical_bad
+  - action: utter_critical
+  - action: utter_critical_bad
+  - intent: goodbye
+  - action: utter_goodbye
