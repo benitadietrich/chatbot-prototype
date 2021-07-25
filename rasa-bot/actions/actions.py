@@ -26,32 +26,58 @@
 #
 #         return []
 
-from typing import Text, List, Any, Dict
+# from typing import Text, List, Any, Dict
 
-from rasa_sdk import Tracker, FormValidationAction
-from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.types import DomainDict
+# from rasa_sdk import Tracker, FormAction
+# from rasa_sdk.executor import CollectingDispatcher
+# from rasa_sdk.types import DomainDict
 
 
-class ValidatePersonalityForm(FormValidationAction):
-    def name(self) -> Text:
-        return "validate_personality_form"
+# class PersonalityForm(FormAction):
+#     def name(self) -> Text:
+#         return "personality_form"
 
-    def validate_critical_thinking(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        """Validate critical thinking value."""
+#     @staticmethod
+#     def required_slots(tracker: Tracker) -> List[Text]:
+#         """A list of required slots that the form has to fill"""
 
-        required_slots = ["critical_thinking"]
-        intent = tracker.latest_message.get("intent", {}).get("name")
+#         return ["criticalThinking"]
 
-        if intent == "intent_critical_good"  :
-            return {"critical_thinking": "good"}
-        else:
-            # validation failed, set this slot to None so that the
-            # user will be asked for the slot again
-            return {"critical_thinking": None}
+#     def submit(self, tracker: Tracker, dispatcher: CollectingDispatcher,):
+#         """Define what the form has to do
+#             	after all required slots are filled"""
+
+#        	dispatcher.utter_template('utter_submit', tracker)
+#         return []
+
+#     def slot_mappings(self):
+#         """A dictionary to map required slots to
+#         - an extracted entity
+#         - intent: value pairs
+#         - a whole message or a list of them, where a first
+#                                  match will be picked"""
+
+#         return { "criticalThinking": [
+#                       self.from_intent(intent='critical_good',
+#                                                  value="good"),
+#                       self.from_intent(intent='critical_bad',
+#                                                  value="bad")]}
+
+    # def validate_criticalThinking(
+    #     self,
+    #     slot_value: Any,
+    #     dispatcher: CollectingDispatcher,
+    #     tracker: Tracker,
+    #     domain: DomainDict,
+    # ) -> Dict[Text, Any]:
+    #     """Validate critical thinking value."""
+
+    #     required_slots = ["criticalThinking"]
+    #     intent = tracker.latest_message.get("intent", {}).get("name")
+
+    #     if intent == "intent_good"  :
+    #         return {"criticalThinking": "good"}
+    #     else:
+    #         # validation failed, set this slot to None so that the
+    #         # user will be asked for the slot again
+    #         return {"criticalThinking": None}

@@ -49,38 +49,6 @@ nlu:
     - Ich möchte nicht mehr weitermachen
     - Stopp
     - Das reicht
-- intent: mood_great
-  examples: |
-    - Perfekt
-    - Grossartig
-    - Toll
-    - wunderbar
-    - Mir geht es sehr gut
-    - Mir geht es gut
-    - Mir geht es perfekt
-    - Ich werde die Welt retten
-    - Gut
-    - Sehr gut
-- intent: mood_unhappy
-  examples: |
-    - Mein Tag war schrecklich
-    - Ich bin traurig
-    - Nicht gut
-    - beschissen
-    - scheiße
-    - traurig
-    - sehr traurig
-    - unglücklich
-    - nicht gut
-    - nicht sehr gut
-    - ich bin krank
-    - Beschissen
-- intent: bot_challenge
-  examples: |
-    - Bist du ein Bot?
-    - Bist du ein Mensch?
-    - Spreche ich mit einem Bot?
-    - Spreche ich mit einem Mensch?
 - intent: critical_good
   examples: |
     - Ich setze die Kritik um
@@ -90,4 +58,6 @@ nlu:
     - Ich weine
 - intent: start_form
   examples: |
-    - Los gehts
+    - Ich möchte das Quiz starten
+    - ich möchte das Quiz starten
+    - Quiz starten

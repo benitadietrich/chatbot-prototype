@@ -1,22 +1,22 @@
 version: '2.0'
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
 intents:
-- greet
+- start_form
 - critical_bad
+- greet
 - goodbye
 - affirm
 - help
 - mood_unhappy
-- start_form
 - deny
 - mood_great
 - bot_challenge
 - stop
 - critical_good
 slots:
-  critical_thinking:
+  thinking:
     type: text
     influence_conversation: true
 responses:
@@ -25,8 +25,8 @@ responses:
   - text: Guten Tag, wie geht es dir?
   - text: Hallo, wie war dein Tag?
   utter_cheer_up:
-  - text: 'Hier ist etwas um dich aufzumuntern:'
-    image: https://i.imgur.com/nGF1K8f.jpg
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Hier ist etwas um dich aufzumuntern:'
   utter_did_that_help:
   - text: Hat es dir geholfen?
   utter_happy:
@@ -47,7 +47,7 @@ responses:
   - text: Möchtest du abbrechen?
   utter_affirm:
   - text: Okay
-  utter_ask_personality_form_critical_thinking:
+  utter_ask_personality_form_thinking:
   - text: Du erledigst eine Aufgabe sehr gewissenhaft, dein Bertreuer kritisiert deine Arbeit jedoch. Wie gehst du damit um?
   utter_critical:
   - text: Während des Studiums wirst du unterschiedlichen Lehrmeinungen und manchmal auch widersprüchlichen Aussagen und Einschätzungen begegnen. Deshalb ist es besonders wichtig eine eigene Meinung zu bilden.
@@ -57,10 +57,11 @@ responses:
   - text: Du scheinst gut mit Kritik umgehen zu können. Wichtig ist für das Studium besonders das Hinterfragen von Infromationen und das Bilden einer Meinung mit Hilfe von Fachliteratur. Damit kannst du später deine Argumente wissenschaftlich untermauern.
   utter_sad:
   - text: :(
+  utter_submit:
+  - text: Danke für die Antwort.
 actions:
 - utter_affirm
 - utter_ask_continue
-- utter_ask_personality_form_critical_thinking
 - utter_break
 - utter_cheer_up
 - utter_critical
@@ -73,13 +74,9 @@ actions:
 - utter_help
 - utter_iamabot
 - utter_sad
-- validate_personality_form
+- utter_submit
 forms:
   personality_form:
     required_slots:
-     critical_thinking:
-     - type: from_intent
-       value: value
-       intent:
-         - intent_critical_good
-         - intent_critical_bad
+      thinking:
+      - type: from_text
