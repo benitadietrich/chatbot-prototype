@@ -3,80 +3,155 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
 intents:
-- start_form
-- critical_bad
-- greet
-- goodbye
-- affirm
-- help
-- mood_unhappy
-- deny
-- mood_great
-- bot_challenge
-- stop
-- critical_good
+  - organization_good
+  - start
+  - start_form
+  - critical_good
+  - ask
+  - organization_bad
+  - critical_bad
+  - help
+  - greet
+  - goodbye
+  - affirm
+  - mood_unhappy
+  - deny
+  - mood_great
+  - bot_challenge
+  - stop
+  - ask_result_quality_good
+  - ask_result_quality_bad
+  - ask_result_eignung_good
+  - ask_result_eignung_bad
+  - query_knowledge_base
+
+entities:
+  - object_type
+  - mention
+
 slots:
+  organization:
+    type: text
+    influence_conversation: true
+  result:
+    type: float
+    initial_value: 0
+    influence_conversation: false
   thinking:
     type: text
     influence_conversation: true
+  requested_slot:
+    type: any
+    influence_conversation: false
+  object_type:
+    type: any
+    influence_conversation: false
+  mention:
+    type: any
+    influence_conversation: false
+  attribute:
+    type: any
+    influence_conversation: false
+
 responses:
+  utter_start:
+    - text: Hey, ich bin Sally! Ich bin ein Bot der DHBW Stuttgart Campus Horb und bin dazu da, dich bei deiner Studienentscheidung zu unterstützen.
+  utter_functions:
+    - text: Wenn du spezifische Fragen rund um das Studium hast, werde ich versuchen dir diese zu beantworten. Wenn du möchtest können wir gemeinsam ein Quiz absolvieren, ob ein duales Studium für dich geeignet ist.
   utter_greet:
-  - text: Hey! Wie gehts dir?
-  - text: Guten Tag, wie geht es dir?
-  - text: Hallo, wie war dein Tag?
-  utter_cheer_up:
-  - image: https://i.imgur.com/nGF1K8f.jpg
-    text: 'Hier ist etwas um dich aufzumuntern:'
+    - text: Hallo!
+    - text: Guten Tag.
   utter_did_that_help:
-  - text: Hat es dir geholfen?
+    - text: Hat es dir geholfen?
   utter_happy:
-  - text: Super, mach weiter so!
-  - text: Toll, das freut mich sehr
+    - text: Super, mach weiter so!
+    - text: Toll, das freut mich sehr
   utter_goodbye:
-  - text: Auf Wiedersehen
-  - text: Tschüss
-  - text: Bis Bald
+    - text: Auf Wiedersehen
+    - text: Tschüss
+    - text: Bis Bald
   utter_iamabot:
-  - text: Ich bin ein Bot und wurde mit Rasa entwickelt.
+    - text: Ich bin ein Bot und wurde mit Rasa entwickelt.
   utter_help:
-  - text: Ich kann dir bei der Studienberatung helfen. Hierzu musst du mir einige Fragen beantworten, hast du ein paar Minuten Zeit?
-  - text: Ich helfe dir gerne, du musst nur einige Fragen beantworten. Hast du ein paar Minuten Zeit?
+    - text: Ich kann dir bei der Studienberatung helfen, wenn du einige Minuten Zeit hast. Du musst mir nur einige Fragen beantworten.
+    - text: Ich helfe dir gerne, du musst nur einige Fragen beantworten. Hast du ein paar Minuten Zeit?
   utter_break:
-  - text: Du kannst jederzeit abbrechen und später zurückkehren.
+    - text: Du kannst jederzeit abbrechen und später zurückkehren.
   utter_ask_continue:
-  - text: Möchtest du abbrechen?
+    - text: Möchtest du abbrechen?
   utter_affirm:
-  - text: Okay
+    - text: Ja
+    - text: Genau
   utter_ask_personality_form_thinking:
-  - text: Du erledigst eine Aufgabe sehr gewissenhaft, dein Bertreuer kritisiert deine Arbeit jedoch. Wie gehst du damit um?
+    - text: Legen wir los! Du erledigst eine Aufgabe sehr gewissenhaft, dein Bertreuer kritisiert deine Arbeit jedoch. Wie gehst du damit um?
   utter_critical:
-  - text: Während des Studiums wirst du unterschiedlichen Lehrmeinungen und manchmal auch widersprüchlichen Aussagen und Einschätzungen begegnen. Deshalb ist es besonders wichtig eine eigene Meinung zu bilden.
+    - text: Es geht hier um deine Fähigkeit kritisch zu denken. Während des Studiums wirst du unterschiedlichen Lehrmeinungen und manchmal auch widersprüchlichen Aussagen und Einschätzungen begegnen. Deshalb ist es besonders wichtig eine eigene Meinung zu bilden.
   utter_critical_bad:
-  - text: Um deine Kritikfähigkeit zu verbessern, versuche dich in die Position deines gegenübers hineinzudenken und sie zu verstehen. Hinterfrage neue Informationen und bilde dir mit Hilfe von Fachliteratur eine eigene Meinung.
+    - text: Um deine Kritikfähigkeit zu verbessern, versuche dich in die Position deines gegenübers hineinzudenken und sie zu verstehen. Hinterfrage neue Informationen und bilde dir mit Hilfe von Fachliteratur eine eigene Meinung.
   utter_critical_good:
-  - text: Du scheinst gut mit Kritik umgehen zu können. Wichtig ist für das Studium besonders das Hinterfragen von Infromationen und das Bilden einer Meinung mit Hilfe von Fachliteratur. Damit kannst du später deine Argumente wissenschaftlich untermauern.
-  utter_sad:
-  - text: :(
+    - text: Du scheinst gut mit Kritik umgehen zu können. Wichtig ist für das Studium besonders das Hinterfragen von Infromationen und das Bilden einer Meinung mit Hilfe von Fachliteratur. Damit kannst du später deine Argumente wissenschaftlich untermauern.
+  utter_ask_personality_form_organization:
+    - text: In einer Prüfungswoche stehen viele Klausuren an, für die unterschiedliche Stoffmengen zu lernen sind. Wie gehst du beim lernen vor um dich vorzubereiten und nciht den Überblick zu verlieren?
+  utter_organization:
+    - text: Es geht hierbei um deine Organisationsfähigkeit. Das duale Studium ist ein Intensivstudium, das in der kürzest möglichen Studiendauer von nur sechs Semestern zum Bachelorabschluss führt. Dabei werden Studien- und Prüfungspläne von der Hochschule für die gesamte Studienzeit vorgegeben und Du hast durchgehend Anwesenheitspflicht. Deshalb ist die Fähigkeit, sich selbst und die gestellten Aufgaben zu organisieren und zu strukturieren insbesondere im dualen Studium einer der wesentlichen Erfolgsfaktoren.
+  utter_organization_good:
+    - text: Die Organisation ist ein wichtiger Punkt im Studium, damit dir deine Aufgaben nicht über den Kopf hinauswachsen. Prüfe deshalb für Dich selbst noch einmal, ob Du bereit bist, Dich auf die vorgegebenen Strukturen eines dualen Studiums einzulassen und Deine Arbeitsweise wenn nötig immer wieder an die unterschiedlichen Anforderungen anzupassen.
+  utter_organization_bad:
+    - text: Alles kann erlernt werden – auch strukturiertes und effizientes Lernen und Arbeiten! Die wichtigste Voraussetzung dafür; Du musst es wirklich wollen! Versuche, in deiner nächsten Klausurenphase einen genauen Lernplan zu erstellen. Du wirst sehen, dass es sich so gelich viel besser lernt.
   utter_submit:
-  - text: Danke für die Antwort.
+    - text: Das wars schon, ich berechne dir nun dein Ergebnis.
+    - text: Danke für deine Antworten, ich werde nun dein Ergebnis berechnen.
+  utter_go:
+    - text: Legen wir los! Wenn du eine Zwischenfrage hast, kannst du sie jederzeit stellen.
+    - text: Fangen wir an! Wenn du eine Zwischenfrage hast, kannst du sie jederzeit stellen.
+  utter_decline:
+    - text: Nein
+    - text: Nicht ganz
+  utter_quality_good:
+    - text: Dein Ergebnis ist eine gute Voraussetzung für das duale Studium.
+    - text: Das bedeutet, dass du für ein duales Studium geeignet bist.
+    - text: Ein duales Studium könnte das richtige für dich sein.
+  utter_quality_bad:
+    - text: Vielleicht solltest du zunächst ein Beratungsgespräch in Betracht ziehen
+    - text: Um ein duales Studium erfolgreich abzuschließen, musst du einige deiner Ansichten verbessern
+  utter_ask_rephrase:
+    - text: "Sorry, I'm not sure I understand. Could you rephrase it?"
+    - text: "Could you please rephrase your message? I didn't quite get that."
+
 actions:
-- utter_affirm
-- utter_ask_continue
-- utter_break
-- utter_cheer_up
-- utter_critical
-- utter_critical_bad
-- utter_critical_good
-- utter_did_that_help
-- utter_goodbye
-- utter_greet
-- utter_happy
-- utter_help
-- utter_iamabot
-- utter_sad
-- utter_submit
+  - action_ask
+  - action_result
+  - utter_affirm
+  - utter_ask_continue
+  - utter_critical
+  - utter_critical_bad
+  - utter_critical_good
+  - utter_did_that_help
+  - utter_functions
+  - utter_goodbye
+  - utter_greet
+  - utter_happy
+  - utter_help
+  - utter_iamabot
+  - utter_organization
+  - utter_organization_bad
+  - utter_organization_good
+  - utter_start
+  - utter_submit
+  - validate_personality_form
+  - utter_go
+  - utter_next
+  - utter_decline
+  - utter_quality_good
+  - utter_quality_bad
+  - action_query_knowledge_base
+  - utter_ask_rephrase
 forms:
   personality_form:
     required_slots:
+      organization:
+        - type: from_text
+          not_intent: ask
       thinking:
-      - type: from_text
+        - type: from_text
+          not_intent: ask

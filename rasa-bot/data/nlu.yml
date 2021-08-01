@@ -1,5 +1,9 @@
 version: "2.0"
 nlu:
+- intent: start
+  examples: |
+    - start
+    - starten
 - intent: help
   examples: |
     - Ich brauche deine Hilfe
@@ -9,6 +13,7 @@ nlu:
     - Ist ein duales Studium das richtige für mich?
     - Ich brauche Hilfe
     - Bitte hilf mir
+    - Ich benötige Hilfe
 - intent: greet
   examples: |
     - Hi
@@ -52,12 +57,62 @@ nlu:
 - intent: critical_good
   examples: |
     - Ich setze die Kritik um
+    - Ich nehme die Kritik an und versuche sie umzusetzen
+    - Ich freue mich eine ehrliche Meinung zu bekommen, schließlich möchte ich die beste sein!
+    - Ich freue mich
 - intent: critical_bad
   examples: |
     - Ich werde sauer
     - Ich weine
+    - Weinen
 - intent: start_form
   examples: |
     - Ich möchte das Quiz starten
     - ich möchte das Quiz starten
     - Quiz starten
+    - Ich möchte das Quiz machen
+    - Hallo Sally, ich würde gerne das Quiz machen.
+    - Lass uns das Quiz machen
+    - Starte das Quiz
+- intent: ask
+  examples: |
+    - Wofür benötige ich das im Studium?
+    - Wieso ist das wichtig?
+    - Wofür brauche ich das?
+    - Wofür brauch ich das?
+- intent: organization_good
+  examples: |
+    - Ich erstelle mir einen Projektplan und gehe nach diesem vor
+    - Ich erstelle mir täglich ToDo Listen in meinem Planer, damit ich den Überblick behalte.
+    - Ich mache mir einen plan
+- intent: organization_bad
+  examples: |
+    - Ich lerne das wonach mir gerade ist
+    - ich beginne erst wenige Tage vor der Klausur mit dem lernen.
+    - Ich lerne einfach mal drauf los
+
+- intent: ask_result_quality_good
+  examples: |
+    - Ist das ein gutes Ergebnis?
+    - ist das gut?
+
+- intent: ask_result_quality_bad
+  examples: |
+    - Ist das ein schlechtes Ergebnis?
+    - Also bin ich zu faul?
+
+- intent: query_knowledge_base
+  examples: |
+    - Welche [studiengänge]{"entity": "object_type", "value": "studiengang"} gibt es an der DHBW Horb?
+    - Welche [fächer]{"entity":"onject_type", "value": "studiengang"} kann man studieren?
+    - Welchen [abschluss](attribute) erhalte ich beim Studiengang [Informatik](studiengang)
+
+- intent: ask_result_eignung_good
+  examples: |
+    - Bedeutet das, ich bin für ein duales Studium geeignet?
+    - Bin ich für ein duales Studium gut geeignet?
+
+- intent: ask_result_eignung_bad
+  examples: |
+    - Also sollte ich lieber nach einem anderen Studium Ausschau halten?
+    - Das beudetet ich bin nicht dafür geeignet?

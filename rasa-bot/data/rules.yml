@@ -2,6 +2,12 @@ version: "2.0"
 
 rules:
 
+- rule: start the conversation
+  steps:
+  - intent: start
+  - action: utter_start
+  - action: utter_functions
+
 - rule: Activate form
   steps:
   - intent: start_form
@@ -17,3 +23,16 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: utter_submit
+  - action: action_result
+
+- rule: Example of an unhappy path
+  condition:
+
+  - active_loop: personality_form
+  steps:
+
+  - intent: ask
+  - action: action_ask
+
+  - action: personality_form
+  - active_loop: personality_form
