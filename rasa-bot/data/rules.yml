@@ -11,14 +11,15 @@ rules:
 - rule: Activate form
   steps:
   - intent: start_form
-  - action: personality_form
-  - active_loop: personality_form
+  - action: utter_go
+  - action: general_form
+  - active_loop: general_form
 
 - rule: Submit form
   condition:
-  - active_loop: personality_form
+  - active_loop: general_form
   steps:
-  - action: personality_form
+  - action: general_form
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
@@ -28,11 +29,17 @@ rules:
 - rule: Example of an unhappy path
   condition:
 
-  - active_loop: personality_form
+  - active_loop: general_form
   steps:
 
-  - intent: ask
-  - action: action_ask
+  - intent: query_benitapi
+  - action: action_search_database
+  - action: utter_back
 
-  - action: personality_form
-  - active_loop: personality_form
+  - action: general_form
+  - active_loop: general_form
+
+- rule: respond to questions
+  steps:
+  - intent: inform
+  - action: utter_inform

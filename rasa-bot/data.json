@@ -4,7 +4,7 @@
             "id": 0,
             "name": "Maschinenbau",
             "abschluss": ["Bachelor of Engineering"],
-            "richtungen": ["Konstruktion und Entwicklung", "KFZ-prüftechnik", "Kuststofftechnik", "Produktionstechnik", "Versorgungs- und Energiemanagement"],
+            "richtungen": ["Konstruktion und Entwicklung", "KFZ-Prüftechnik", "Kuststofftechnik", "Produktionstechnik", "Versorgungs- und Energiemanagement"],
             "dauer": "3 Jahre"
         },
         {

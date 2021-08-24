@@ -1,10 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
 import CustomWidget from "./CustomWidget";
+import Chat from "./components/Chat";
 
 function App() {
   return (
     <div className="App">
+      <Chat />
       <CustomWidget></CustomWidget>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

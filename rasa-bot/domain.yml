@@ -3,43 +3,53 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
 intents:
-  - organization_good
-  - start
-  - start_form
-  - critical_good
-  - ask
-  - organization_bad
-  - critical_bad
-  - help
-  - greet
-  - goodbye
-  - affirm
-  - mood_unhappy
-  - deny
-  - mood_great
-  - bot_challenge
-  - stop
-  - ask_result_quality_good
-  - ask_result_quality_bad
-  - ask_result_eignung_good
-  - ask_result_eignung_bad
-  - query_knowledge_base
-
+- query_benitapi
+- start_form
+- affirm
+- start
+- ask
+- help
+- greet
+- goodbye
+- decline
+- mood_unhappy
+- deny
+- mood_great
+- bot_challenge
+- stop
+- ask_result_quality_good
+- ask_result_quality_bad
+- ask_result_eignung_good
+- ask_result_eignung_bad
+- query_knowledge_base
 entities:
-  - object_type
-  - mention
-
+- mention
+- object_type
 slots:
-  organization:
+  grades:
+    type: text
+    influence_conversation: true
+  ratgeber:
+    type: text
+    influence_conversation: true
+  exams:
+    type: text
+    influence_conversation: true
+  einstieg:
+    type: text
+    influence_conversation: true
+  theory:
+    type: text
+    influence_conversation: true
+  wissenschaftlich:
     type: text
     influence_conversation: true
   result:
     type: float
     initial_value: 0
     influence_conversation: false
-  thinking:
-    type: text
-    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
   requested_slot:
     type: any
     influence_conversation: false
@@ -52,106 +62,169 @@ slots:
   attribute:
     type: any
     influence_conversation: false
-
 responses:
   utter_start:
-    - text: Hey, ich bin Sally! Ich bin ein Bot der DHBW Stuttgart Campus Horb und bin dazu da, dich bei deiner Studienentscheidung zu unterstützen.
+  - text: Hey, ich bin Sally! Ich bin ein Bot der DHBW Stuttgart Campus Horb und bin dazu da, dich bei deiner Studienentscheidung zu unterstützen.
   utter_functions:
-    - text: Wenn du spezifische Fragen rund um das Studium hast, werde ich versuchen dir diese zu beantworten. Wenn du möchtest können wir gemeinsam ein Quiz absolvieren, ob ein duales Studium für dich geeignet ist.
+  - text: Wenn du spezifische Fragen rund um das Studium hast, werde ich versuchen dir diese zu beantworten. Wenn du möchtest, können wir gemeinsam ein Quiz absolvieren, ob ein duales Studium für dich geeignet ist.
   utter_greet:
-    - text: Hallo!
-    - text: Guten Tag.
+  - text: Hallo!
+  - text: Guten Tag.
   utter_did_that_help:
-    - text: Hat es dir geholfen?
+  - text: Hat es dir geholfen?
   utter_happy:
-    - text: Super, mach weiter so!
-    - text: Toll, das freut mich sehr
+  - text: Super!
+  - text: Großartig, das freut mich sehr
   utter_goodbye:
-    - text: Auf Wiedersehen
-    - text: Tschüss
-    - text: Bis Bald
+  - text: Auf Wiedersehen
+  - text: Tschüss
+  - text: Bis Bald
   utter_iamabot:
-    - text: Ich bin ein Bot und wurde mit Rasa entwickelt.
+  - text: Ich bin ein Bot und wurde mit Rasa entwickelt.
   utter_help:
-    - text: Ich kann dir bei der Studienberatung helfen, wenn du einige Minuten Zeit hast. Du musst mir nur einige Fragen beantworten.
-    - text: Ich helfe dir gerne, du musst nur einige Fragen beantworten. Hast du ein paar Minuten Zeit?
+  - text: Ich kann dir bei der Studienberatung helfen, wenn du einige Minuten Zeit hast. Du musst mir nur einige Fragen beantworten.
+  - text: Ich helfe dir gerne, du musst nur einige Fragen beantworten. Hast du ein paar Minuten Zeit?
+  - text: Brauchst du Hilfe bei der Studienberatung? Lass uns gemeinsam ein Quiz machen, um deine Fähigkeiten zu testen.
   utter_break:
-    - text: Du kannst jederzeit abbrechen und später zurückkehren.
+  - text: Du kannst jederzeit abbrechen und später zurückkehren.
+  - text: Du kannst jederzeit aufhören, wenn du nicht mehr möchtest.
   utter_ask_continue:
-    - text: Möchtest du abbrechen?
+  - text: Möchtest du abbrechen?
+  - text: Möchtest du aufhören?
+  - text: Willst du das Quiz beenden?
   utter_affirm:
-    - text: Ja
-    - text: Genau
-  utter_ask_personality_form_thinking:
-    - text: Legen wir los! Du erledigst eine Aufgabe sehr gewissenhaft, dein Bertreuer kritisiert deine Arbeit jedoch. Wie gehst du damit um?
-  utter_critical:
-    - text: Es geht hier um deine Fähigkeit kritisch zu denken. Während des Studiums wirst du unterschiedlichen Lehrmeinungen und manchmal auch widersprüchlichen Aussagen und Einschätzungen begegnen. Deshalb ist es besonders wichtig eine eigene Meinung zu bilden.
-  utter_critical_bad:
-    - text: Um deine Kritikfähigkeit zu verbessern, versuche dich in die Position deines gegenübers hineinzudenken und sie zu verstehen. Hinterfrage neue Informationen und bilde dir mit Hilfe von Fachliteratur eine eigene Meinung.
-  utter_critical_good:
-    - text: Du scheinst gut mit Kritik umgehen zu können. Wichtig ist für das Studium besonders das Hinterfragen von Infromationen und das Bilden einer Meinung mit Hilfe von Fachliteratur. Damit kannst du später deine Argumente wissenschaftlich untermauern.
-  utter_ask_personality_form_organization:
-    - text: In einer Prüfungswoche stehen viele Klausuren an, für die unterschiedliche Stoffmengen zu lernen sind. Wie gehst du beim lernen vor um dich vorzubereiten und nciht den Überblick zu verlieren?
-  utter_organization:
-    - text: Es geht hierbei um deine Organisationsfähigkeit. Das duale Studium ist ein Intensivstudium, das in der kürzest möglichen Studiendauer von nur sechs Semestern zum Bachelorabschluss führt. Dabei werden Studien- und Prüfungspläne von der Hochschule für die gesamte Studienzeit vorgegeben und Du hast durchgehend Anwesenheitspflicht. Deshalb ist die Fähigkeit, sich selbst und die gestellten Aufgaben zu organisieren und zu strukturieren insbesondere im dualen Studium einer der wesentlichen Erfolgsfaktoren.
-  utter_organization_good:
-    - text: Die Organisation ist ein wichtiger Punkt im Studium, damit dir deine Aufgaben nicht über den Kopf hinauswachsen. Prüfe deshalb für Dich selbst noch einmal, ob Du bereit bist, Dich auf die vorgegebenen Strukturen eines dualen Studiums einzulassen und Deine Arbeitsweise wenn nötig immer wieder an die unterschiedlichen Anforderungen anzupassen.
-  utter_organization_bad:
-    - text: Alles kann erlernt werden – auch strukturiertes und effizientes Lernen und Arbeiten! Die wichtigste Voraussetzung dafür; Du musst es wirklich wollen! Versuche, in deiner nächsten Klausurenphase einen genauen Lernplan zu erstellen. Du wirst sehen, dass es sich so gelich viel besser lernt.
+  - text: Ja
+  - text: Genau
+  utter_ask_general_form_grades:
+  - text: Denkst du, dass du nur mit guten Noten eine Chance hast einen dualen Studienplatz zu bekommen?
+  - text: Bist du der Meinung, dass man nur mit guten Noten einen dualen Studienplatz bekommt?
+  - text: Was denkst du - Hat man nur mit guten Noten eine Chance auf einen Studienplatz?
+  - text: Kann man einen Studienplatz nur mit guten Noten bekommen?
+  utter_grades_bad:
+  - text: Zunächst einmal sind Noten insofern relevant, dass sie einen ersten Einblick auf die Leistungsfähigkeit und Lernbereitschaft geben. Wenn du dir deiner Kompetenzen sicher bist, kannst du auch mit mittelmäßigen Noten ein Unternehmen von dir überzeugen.
+  - text: Also, deine Noten geben dem Unternehmen, bei dem du dich bewirbst, einen ersten Eindruck über deine Lernbereitschaft und deine Leistungsfähigkeit. Allerdings sind auch andere Eigenschaften, wie Motivation, Selbstmanagement oder deine Persönlichkeit wichtig.
+  - text: Beim dualen Studium sind gute Noten zwar auch wichtig, da sie eine erste Information über dich darstellen, allerdings gibt es auch andere aussagekräftige Eigenschaften. Wenn du dir deiner Fähigkeiten und Kompetenzen sicher bist, kannst du auch ein Unternehmen von dir überzeugen.
+  utter_grades_good:
+  - text: Stimmt, denn beim dualen Studium sind auch die Motivation, die Persönlichkeit und das Selbstmanagement an. Deine Noten geben dem Unternehmen jedoch einen ersten Einblick über deine Lernbereitschaft und -fähigkeiten.
+  - text: Genau, es gibt nämlich neben den Noten auch noch andere wichtige Eigenschaften, auf die die Unternehmen bei der Bewerbung schauen. Wenn du dir deiner Fähigkeiten sicher bist, kannst du auch ein Unternehmen von dir überzeugen.
+  utter_ask_general_form_ratgeber:
+  - text: Sind denn deine Eltern und Freunde ein wichtiger Ratgeber für deine Studienentscheidung?
+  - text: Verlässt du dich bei deiner Studienentscheidung auf den Rat deiner Familie und Freunde?
+  - text: Spielt der Rat deiner Familie und Freunde bei deiner Studienentscheidung eine große Rolle?
+  utter_ratgeber_bad:
+  - text: Außenstehende haben oftmals einen anderen Blick auf deine Fähigkeiten als du selbst, deshalb ist es gut Ratschlägen zuzuhören. Wichtiger ist allerdings, dass du selbst von deinen Fähigkeiten überzeugt ist. Falls du dir noch unsicher bist welcher Studiengang der Richtige ist, kann ich dir den Test unter www.was-studiere-ich.de empfehlen!
+  - text: Deine persönlichen Stärken und Kompetenzen können von Außenstehenden oftmals anders beurteilt werden, deshalb kannst du dir gerne Ratschläge anhören. Du solltest jedoch auch deine eigenen Kompetenzen selbst kennen und dir sicher sein! Wie wäre es mit dem Test unter www.was-studiere-ich.de? Vielleicht findest du einen neuen spannenden Studiengang.
+  utter_ratgeber_good:
+  - text: Bei deiner Studienentscheidung stehen deine persönlichen Neigungen, Kompetenzen und auch Interessen im Vordergrund. Du scheinst diese gut zu kennen, das ist eine tolle Voraussetzung!
+  - text: Es ist super, dass du deine Entscheidung unabhängig von Außenstehenden triffst und deine Kompetenzen und Fähigkeiten selbst gut kennst. Das ist eine gute Voraussetzung für das Studium.
+  utter_ask_general_form_einstieg:
+  - text: Ist der Hauptgrund, wieso du dich für ein duales Studium hast, weil es dir einen sicheren Einstieg in das Berufsleben bietet?
+  - text: hast du dich für ein duales Studium entschieden, weil es dir einen sicheren Einstieg in das Berufsleben bietet?
+  - text: Möchtest hauptsächlich dual studieren, da es dir einen sicheren Einstieg in das Berufsleben ermöglicht?
+  utter_einstieg_bad:
+  - text: Für den Einstieg in das Berufsleben bietet das duale Studienmodell eine gute Ausgangsposition. Schau jedoch auch vor allem darauf, dass das Studienfach mit dienen persönlichen und fachlichen Interessen zusammenpasst.
+  - text: Mit dem dualen Modell, hast du später einen guten Ausgangspunkt, um in das Berufsleben einzusteigen, das ist richtig. Es ist aber viel wichtiger, dass der Studiengang mit deinen eigenen Interessen zusammenpasst.
+  utter_einstieg_good:
+  - text: Dir ist zwar klar, dass das duale Studienmodell einen guten Einstiegspunkt in das Berufsleben bieten, das ist jedoch nicht allein ausschlaggebend. Das ist gut so!
+  utter_ask_general_form_exams:
+  - text: Denkst du, du kannst es schaffen das Wissen der dreimonatigen Theoriephase in einer Klausurwoche abzurufen?
+  - text: Bist du der Meinung du kannst das Wissen aus drei Monaten Theorie in einer Klausurwoche abzurufen?
+  utter_exams_good:
+  - text: Das ist gut! Wenn es dir gelingt, die an dich gestellten Anforderungen und deine Lernstrategie immer wieder zu überprüfen und anzupassen, wirst du mit der Prüfungsstruktur im dualen Studium gut zurechtkommen.
+  - text: Super, mit einer guten Lernstrategie kannst du Klausurwoche viel leichter bewältigen. Dann wirst du auch mit der Prüfungsstruktur gut zurechtkommen.
+  utter_exams_bad:
+  - text: Im dualen Studium wird der gesamte Stoff aus ca. drei Monaten Studium in der letzten Woche der Theoriephase abgeprüft. Wenn du also dual studieren möchtest und Schwierigkeiten hast, die an dich gestellten Anforderungen und deine Lernstrategie realistisch einzuschätzen, könnte es schwierig werden. Ich empfehle dir ein Beratungsgespräch!
+  - text: In der letzten Woche der Theoriephase wird im dualen Studium das Wissen der dreimonatigen Phase abgeprüft. Es ist wichtig, dass du dir eine gute Lernstrategie aneignest und du diese immer wieder anpasst. Wenn du damit Probleme hast, empfehle ich dir unbedingt ein Gespräch mit der Studierendenberatung.
+  utter_ask_general_form_wissenschaftlich:
+  - text: Gehst du davon aus, dass du im dualen Studium regelmäßig umfangreiche wissenschaftliche Texte lesen, bearbeiten, selbst ausformulieren oder hinterfragen musst?
+  - text: Was meinst du - Musst du im dualen Studium regelmäßig umfangreiche wissenschaftliche Texte lesen und sie hinterfragen oder auch selbst schreiben?
+  utter_wissenschaftlich_good:
+  - text: Genau, wissenschaftliches Arbeiten ist nämlich ein Kernelement eines jeden Studiums. Aber keine Sorge - du lernst alles in den entsprechenden Kursen.
+  - text: Da liegst du richtig, wissenschaftliches Arbeiten ist in jedem Studium von großer Bedeutung. Es gibt auch entsprechende Kurse, in denen du wissenschaftliches Arbeiten erlernst.
+  utter_wissenschaftlich_bad:
+  - text: Hm das stimmt nicht ganz. Das duale Studium ist zwar praktisch orientiert, allerdings sind wissenschaftliche Kompetenzen bei jedem Studium ein Teil der grundlegenden Kompetenzen.
+  - text: Das duale Studium ist praktisch orientiert, aber dennoch zählt wissenschaftliches Arbeiten zu den grundlegenden Kompetenzen eines jeden Studiums. Es gibt aber Kurse, in denen du es Lernen wirst.
+  utter_ask_general_form_theory:
+  - text: Wie denkst du über folgende Aussage - Im dualen Studium muss ich mich viel mit der Theorie auseinandersetzen.
+  - text: Glaubst du, dass du dich im dualen Studium viel mit der Theorie beschäftigen wirst?
+  utter_theory_good:
+  - text: Du liegst völlig richtig. Auch die Theorie ist im dualen Studium wichtig
+  utter_theory_bad:
+  - text: Das stimmt nicht ganz, die Theorie bleibt ein wichtiger Bestandteil des dualen Studiums
   utter_submit:
-    - text: Das wars schon, ich berechne dir nun dein Ergebnis.
-    - text: Danke für deine Antworten, ich werde nun dein Ergebnis berechnen.
+  - text: Das wars schon, ich berechne dir nun dein Ergebnis.
+  - text: Danke für deine Antworten, ich werde nun dein Ergebnis berechnen.
   utter_go:
-    - text: Legen wir los! Wenn du eine Zwischenfrage hast, kannst du sie jederzeit stellen.
-    - text: Fangen wir an! Wenn du eine Zwischenfrage hast, kannst du sie jederzeit stellen.
+  - text: Gerne, legen wir los! Wenn du eine Zwischenfrage hast, kannst du sie jederzeit stellen.
+  - text: Okay, fangen wir an! Wenn du eine Zwischenfrage hast, kannst du sie jederzeit stellen.
   utter_decline:
-    - text: Nein
-    - text: Nicht ganz
+  - text: Nein
+  - text: Nicht ganz
   utter_quality_good:
-    - text: Dein Ergebnis ist eine gute Voraussetzung für das duale Studium.
-    - text: Das bedeutet, dass du für ein duales Studium geeignet bist.
-    - text: Ein duales Studium könnte das richtige für dich sein.
+  - text: Dein Ergebnis ist eine gute Voraussetzung für das duale Studium.
+  - text: Das bedeutet, dass du für ein duales Studium geeignet bist.
+  - text: Ein duales Studium könnte das richtige für dich sein.
   utter_quality_bad:
-    - text: Vielleicht solltest du zunächst ein Beratungsgespräch in Betracht ziehen
-    - text: Um ein duales Studium erfolgreich abzuschließen, musst du einige deiner Ansichten verbessern
-  utter_ask_rephrase:
-    - text: "Sorry, I'm not sure I understand. Could you rephrase it?"
-    - text: "Could you please rephrase your message? I didn't quite get that."
-
+  - text: Vielleicht solltest du zunächst ein Beratungsgespräch in Betracht ziehen
+  - text: Um ein duales Studium erfolgreich abzuschließen, musst du einige deiner Ansichten verbessern.
+  utter_inform:
+  - text: Du kannst an der DHBW die Studiengänge {inform} studieren.
+  utter_next:
+  - text: Nächste Frage
+  utter_back:
+  - text: Zurück zur Frage
+  utter_berufsleben:
+  - text: Der akademische Abschluss des dualen Studiums setzt ein gewissen theoretisches Grundlagenwissen voraus, welches im Studium auch vermittelt wird.
 actions:
-  - action_ask
-  - action_result
-  - utter_affirm
-  - utter_ask_continue
-  - utter_critical
-  - utter_critical_bad
-  - utter_critical_good
-  - utter_did_that_help
-  - utter_functions
-  - utter_goodbye
-  - utter_greet
-  - utter_happy
-  - utter_help
-  - utter_iamabot
-  - utter_organization
-  - utter_organization_bad
-  - utter_organization_good
-  - utter_start
-  - utter_submit
-  - validate_personality_form
-  - utter_go
-  - utter_next
-  - utter_decline
-  - utter_quality_good
-  - utter_quality_bad
-  - action_query_knowledge_base
-  - utter_ask_rephrase
+- action_ask
+- action_query_knowledge_base
+- action_result
+- action_search_database
+- utter_affirm
+- utter_ask_continue
+- utter_back
+- utter_berufsleben
+- utter_critical
+- utter_critical_bad
+- utter_critical_good
+- utter_decline
+- utter_did_that_help
+- utter_functions
+- utter_go
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_help
+- utter_iamabot
+- utter_next
+- utter_organization
+- utter_organization_bad
+- utter_organization_good
+- utter_quality_bad
+- utter_quality_good
+- utter_start
+- utter_submit
+- validate_general_form
 forms:
-  personality_form:
+  general_form:
+    ignored_intents:
+    - ask
     required_slots:
-      organization:
-        - type: from_text
-          not_intent: ask
-      thinking:
-        - type: from_text
-          not_intent: ask
+      grades:
+      - type: from_text
+        not_intent: ask
+      ratgeber:
+      - type: from_text
+        not_intent: ask
+      einstieg:
+      - type: from_text
+        not_intent: ask
+      exams:
+      - type: from_text
+        not_intent: ask
+      wissenschaftlich:
+      - type: from_text
+        not_intent: ask
+      theory:
+      - type: from_text
+        not_intent: ask

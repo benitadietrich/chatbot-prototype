@@ -4,6 +4,39 @@ nlu:
   examples: |
     - start
     - starten
+- intent: affirm
+  examples: |
+    - Ja, mit einem ordentlichen Lernplan kann ich die Klausurphase gut bewältigen
+    - Wenn man früh genug anfängt zu lernen, klappt das bestimmt
+    - Ich denke schon.
+    - Ja
+    - Ja, das ist kein Problem für mich.
+    - Ich bin mir noch unsicher was ich studieren soll, deshalb höre ich viel auf den Rat meienr Eltern.
+    - Ja, ich möchte das studieren um bei meinen Freunden zu bleiben.
+    - Ja, ansonsten hat man keine Chance.
+    - Ja, ich glaub schon das gute Noten sehr wichtig sind.
+    - Ich möchte nach dem Studium schließlich möglichst schnell richtig Geld verdienen.
+    - Natürlich
+    - Klar
+    - Hört sich gut an
+    - Korrekt
+    - Ok
+    - Ja, ich denke schon dass die Noten eine gewisse Aussagekraft haben.
+- intent: decline
+  examples: |
+    - Ich denke das könnte schwierig für mich werden.
+    - Ich lerne meistens einfach drauf los, aber ich schaffe das schon irgendwie.
+    - Nein, ich nehme gerne die Tipps meiner Eltern an, aber ich finde die Entscheidung muss ich selbst treffen.
+    - Ich denke eine Srudieneintscheidung sollte man alleine treffen.
+    - Ich denke gute Noten sind zwar wichtig, aber sind auch andere Eigenschaften relevant.
+    - Hm, ich denke gute Noten sind schon wichtig, aber es ist wichtiger ein unternehmen von sich zu überzeugen
+    - Nein, das war für mich nicht der Hauptgrund
+    - Das war für mich zwar ein Entshciedungskriterium, aber nicht das primäre
+    - Ne
+    - Nein
+    - Niemals
+    - Auf gar keinen Fall
+    - Ne wieso sollte ich
 - intent: help
   examples: |
     - Ich brauche deine Hilfe
@@ -33,14 +66,6 @@ nlu:
     - bye
     - Schönen Tag
     - Bis später
-- intent: affirm
-  examples: |
-    - Ja
-    - Natürlich
-    - Klar
-    - Hört sich gut an
-    - Korrekt
-    - Ok
 - intent: deny
   examples: |
     - Nein
@@ -54,17 +79,6 @@ nlu:
     - Ich möchte nicht mehr weitermachen
     - Stopp
     - Das reicht
-- intent: critical_good
-  examples: |
-    - Ich setze die Kritik um
-    - Ich nehme die Kritik an und versuche sie umzusetzen
-    - Ich freue mich eine ehrliche Meinung zu bekommen, schließlich möchte ich die beste sein!
-    - Ich freue mich
-- intent: critical_bad
-  examples: |
-    - Ich werde sauer
-    - Ich weine
-    - Weinen
 - intent: start_form
   examples: |
     - Ich möchte das Quiz starten
@@ -74,45 +88,56 @@ nlu:
     - Hallo Sally, ich würde gerne das Quiz machen.
     - Lass uns das Quiz machen
     - Starte das Quiz
+    - Ich möchte gerne das Quiz machen
 - intent: ask
   examples: |
     - Wofür benötige ich das im Studium?
     - Wieso ist das wichtig?
     - Wofür brauche ich das?
     - Wofür brauch ich das?
-- intent: organization_good
-  examples: |
-    - Ich erstelle mir einen Projektplan und gehe nach diesem vor
-    - Ich erstelle mir täglich ToDo Listen in meinem Planer, damit ich den Überblick behalte.
-    - Ich mache mir einen plan
-- intent: organization_bad
-  examples: |
-    - Ich lerne das wonach mir gerade ist
-    - ich beginne erst wenige Tage vor der Klausur mit dem lernen.
-    - Ich lerne einfach mal drauf los
-
+    - Hm wozu brauche ich das?
+    - Und wozu ist das relevant?
 - intent: ask_result_quality_good
   examples: |
     - Ist das ein gutes Ergebnis?
     - ist das gut?
-
 - intent: ask_result_quality_bad
   examples: |
     - Ist das ein schlechtes Ergebnis?
     - Also bin ich zu faul?
-
+- intent: query_benitapi
+  examples: |
+    - Lernt man im dualen Studium denn nur Sachen für den späteren [Beruf]{"entity": "attribute", "value": "beruf"}
+    - Lernt man denn nur Sachen für den späteren [Beruf]{"entity": "object_type", "value": "beruf"}
+    - Lernt man im dualen Studium denn nur Sachen für den späteren [beruf](object_type)?
+    - Lernt man im Studium nur für den [beruf](object_type)?
+    - Lernt man nur Sachen für den [beruf](object_type)?
+    - Lernt man nur Sachen für den [beruf](object_type)?
+    - Welche [Eigenschaften]{"entity":"attribute", "value": "eigenschaften"} sind bei einer [Bewerbung]{"entity":"object_type", "value": "bewerbung"} wichtig?
+    - Wie kann ich ein [Unternehmen]{"entity":"object_type", "value": "bewerbung"} von mir [überzeugen]{"entity":"attribute", "value": "eigenschaften"}?
+    - Also kann ich mich auch nur mit [mittelmäßigen]{"entity":"attribute_1", "value": "mittel"} [Noten]{"entity":"attribute", "value": "noten"} [bewerben]{"entity":"attribute", "value": "bewerbung"}?
 - intent: query_knowledge_base
   examples: |
     - Welche [studiengänge]{"entity": "object_type", "value": "studiengang"} gibt es an der DHBW Horb?
-    - Welche [fächer]{"entity":"onject_type", "value": "studiengang"} kann man studieren?
+    - Welche [fächer]{"entity": "object_type", "value": "studiengang"} kann man studieren?
     - Welchen [abschluss](attribute) erhalte ich beim Studiengang [Informatik](studiengang)
-
+    - Welche [Studiengänge]{"entity": "object_type", "value": "studiengang"} gibt es an der DHBW?
 - intent: ask_result_eignung_good
   examples: |
     - Bedeutet das, ich bin für ein duales Studium geeignet?
     - Bin ich für ein duales Studium gut geeignet?
-
 - intent: ask_result_eignung_bad
   examples: |
     - Also sollte ich lieber nach einem anderen Studium Ausschau halten?
-    - Das beudetet ich bin nicht dafür geeignet?
+    - Das bedeutet ich bin nicht dafür geeignet?
+- synonym: informationen
+  examples: |
+    - Studium
+- synonym: beruf
+  examples: |
+    - Beruf
+- synonym: studiengang
+  examples: |
+    - studiengänge
+    - fächer
+    - Studiengänge
