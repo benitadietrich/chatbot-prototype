@@ -89,6 +89,8 @@ nlu:
     - Lass uns das Quiz machen
     - Starte das Quiz
     - Ich möchte gerne das Quiz machen
+    - Lass mal das Quiz starten
+    - quiz starten
 - intent: ask
   examples: |
     - Wofür benötige ich das im Studium?
@@ -112,16 +114,23 @@ nlu:
     - Lernt man im dualen Studium denn nur Sachen für den späteren [beruf](object_type)?
     - Lernt man im Studium nur für den [beruf](object_type)?
     - Lernt man nur Sachen für den [beruf](object_type)?
-    - Lernt man nur Sachen für den [beruf](object_type)?
-    - Welche [Eigenschaften]{"entity":"attribute", "value": "eigenschaften"} sind bei einer [Bewerbung]{"entity":"object_type", "value": "bewerbung"} wichtig?
-    - Wie kann ich ein [Unternehmen]{"entity":"object_type", "value": "bewerbung"} von mir [überzeugen]{"entity":"attribute", "value": "eigenschaften"}?
-    - Also kann ich mich auch nur mit [mittelmäßigen]{"entity":"attribute_1", "value": "mittel"} [Noten]{"entity":"attribute", "value": "noten"} [bewerben]{"entity":"attribute", "value": "bewerbung"}?
-- intent: query_knowledge_base
-  examples: |
+    - Welche [Eigenschaften]{"entity": "attribute", "value": "eigenschaften"} sind bei einer [Bewerbung]{"entity": "object_type", "value": "bewerbung"} wichtig?
+    - Wie kann ich ein [Unternehmen]{"entity": "object_type", "value": "bewerbung"} von mir [überzeugen]{"entity": "attribute", "value": "eigenschaften"}?
+    - Also kann ich mich auch nur mit [mittelmäßigen]{"entity": "specific_info", "value": "mittel"} [Noten]{"entity": "attribute", "value": "noten"} [bewerben]{"entity": "attribute", "value": "bewerbung"}?
+    - Lernt man denn nur Sachen für den späteren [beruf](object_type)?
+    - Welche [Eigenschaften]{"entity": "attribute", "value": "eigenschaften"} sind bei einer [Bewerbung]{"entity": "object_type", "value": "bewerbung"}?
+    - Wie [lange]{"entity": "attribute", "value": "dauer"} dauert ein [Studium]{"entity": "object_type", "value": "informationen"}
+    - Wie viele [Semester]{"entity": "attribute", "value": "semester"} gibt es im [Studium]{"entity": "object_type", "value": "informationen"}
     - Welche [studiengänge]{"entity": "object_type", "value": "studiengang"} gibt es an der DHBW Horb?
     - Welche [fächer]{"entity": "object_type", "value": "studiengang"} kann man studieren?
     - Welchen [abschluss](attribute) erhalte ich beim Studiengang [Informatik](studiengang)
     - Welche [Studiengänge]{"entity": "object_type", "value": "studiengang"} gibt es an der DHBW?
+    - Welchen [Abschluss]{"entity": "specific_info", "value": "abschluss"} mache ich beim [Studiengang]{"entity": "object_type", "value": "studiengang"} [Informatik]{"entity": "attribute", "value": "informatik"}
+    - welche [Studienrichtungen]{"entity": "specific_info", "value": "richtungen"} gibt es beim [Studiengang]{"entity": "object_type", "value": "studiengang"} [Mechatronik]{"entity": "attribute", "value": "mechatronik"}
+    - Welche [Studiengänge]{"entity": "object_type", "value": "studiengang"} gibt es?
+    - Wie [lange]{"entity": "attribute", "value": "dauer"} dauert ein [Studium]{"entity": "object_type", "value": "informationen"}?
+    - Kann ich mich auch [mittelmäßigen]{"entity": "specific_info", "value": "mittel"} [Noten]{"entity": "attribute", "value": "noten"} [bewerben]{"entity": "attribute", "value": "bewerbung"}?
+    - Lernt man denn im Studium nur Sachen für den späteren [Beruf]{"entity": "object_type", "value": "beruf"}?
 - intent: ask_result_eignung_good
   examples: |
     - Bedeutet das, ich bin für ein duales Studium geeignet?
@@ -130,14 +139,48 @@ nlu:
   examples: |
     - Also sollte ich lieber nach einem anderen Studium Ausschau halten?
     - Das bedeutet ich bin nicht dafür geeignet?
-- synonym: informationen
-  examples: |
-    - Studium
 - synonym: beruf
   examples: |
     - Beruf
+- synonym: eigenschaften
+  examples: |
+    - Eigenschaften
+    - überzeugen
+- synonym: bewerbung
+  examples: |
+    - Bewerbung
+    - Unternehmen
+    - bewerben
+- synonym: mittel
+  examples: |
+    - mittelmäßigen
+- synonym: noten
+  examples: |
+    - Noten
+- synonym: dauer
+  examples: |
+    - lange
+- synonym: informationen
+  examples: |
+    - Studium
+- synonym: semester
+  examples: |
+    - Semester
 - synonym: studiengang
   examples: |
     - studiengänge
     - fächer
     - Studiengänge
+    - Studiengang
+- synonym: abschluss
+  examples: |
+    - Abschluss
+- synonym: informatik
+  examples: |
+    - Informatik
+- synonym: richtungen
+  examples: |
+    - Studienrichtungen
+- synonym: mechatronik
+  examples: |
+    - Mechatronik

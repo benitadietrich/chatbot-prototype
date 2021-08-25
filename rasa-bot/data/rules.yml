@@ -8,6 +8,15 @@ rules:
   - action: utter_start
   - action: utter_functions
 
+- rule: Handle question
+  steps:
+  - intent: query_benitapi
+    entities:
+    - object_type: beruf
+  - slot_was_set:
+    - object_type: beruf
+  - action: action_search_database
+
 - rule: Activate form
   steps:
   - intent: start_form
@@ -25,19 +34,6 @@ rules:
     - requested_slot: null
   - action: utter_submit
   - action: action_result
-
-- rule: Example of an unhappy path
-  condition:
-
-  - active_loop: general_form
-  steps:
-
-  - intent: query_benitapi
-  - action: action_search_database
-  - action: utter_back
-
-  - action: general_form
-  - active_loop: general_form
 
 - rule: respond to questions
   steps:

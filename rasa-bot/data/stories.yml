@@ -54,3 +54,128 @@ stories:
   - slot_was_set:
     - object_type: beruf
   - action: action_search_database
+
+- story: interactive_story_1
+  steps:
+  - intent: query_benitapi
+    entities:
+    - object_type: beruf
+  - slot_was_set:
+    - object_type: beruf
+  - action: action_search_database
+  - intent: query_benitapi
+    entities:
+    - attribute: eigenschaften
+    - object_type: bewerbung
+  - slot_was_set:
+    - object_type: bewerbung
+  - slot_was_set:
+    - attribute: eigenschaften
+  - action: action_search_database
+  - intent: query_benitapi
+    entities:
+    - object_type: beruf
+  - slot_was_set:
+    - object_type: beruf
+  - action: action_search_database
+  - intent: query_benitapi
+    entities:
+    - object_type: beruf
+  - slot_was_set:
+    - object_type: beruf
+  - action: action_search_database
+  - slot_was_set:
+    - attribute: null
+  - intent: query_benitapi
+    entities:
+    - object_type: beruf
+  - slot_was_set:
+    - object_type: beruf
+  - action: action_search_database
+  - slot_was_set:
+    - attribute: null
+  - intent: query_benitapi
+    entities:
+    - attribute: eigenschaften
+    - object_type: bewerbung
+  - slot_was_set:
+    - object_type: bewerbung
+  - slot_was_set:
+    - attribute: eigenschaften
+  - action: action_search_database
+  - slot_was_set:
+    - attribute: null
+
+- story: interactive_story_1
+  steps:
+  - intent: query_benitapi
+    entities:
+    - object_type: studiengang
+  - slot_was_set:
+    - object_type: studiengang
+  - action: action_search_database
+  - slot_was_set:
+    - attribute: null
+  - intent: start_form
+  - action: utter_go
+  - action: general_form
+  - active_loop: general_form
+  - slot_was_set:
+    - requested_slot: grades
+  - intent: query_benitapi
+    entities:
+    - attribute: dauer
+    - object_type: informationen
+  - slot_was_set:
+    - object_type: informationen
+  - slot_was_set:
+    - attribute: dauer
+  - action: action_search_database
+  - slot_was_set:
+    - attribute: null
+  - action: utter_back
+  - action: general_form
+  - slot_was_set:
+    - requested_slot: grades
+
+- story: interactive_story_1
+  steps:
+  - intent: start_form
+  - action: utter_go
+  - action: general_form
+  - active_loop: general_form
+  - slot_was_set:
+    - requested_slot: grades
+  - intent: query_benitapi
+    entities:
+    - specific_info: mittel
+    - attribute: noten
+    - attribute: bewerbung
+  - slot_was_set:
+    - attribute: bewerbung
+  - action: action_search_database
+  - action: utter_back
+  - action: general_form
+  - slot_was_set:
+    - requested_slot: grades
+  - slot_was_set:
+    - grades: Ja
+  - slot_was_set:
+    - result: 1
+  - slot_was_set:
+    - requested_slot: ratgeber
+  - slot_was_set:
+    - ratgeber: Nein
+  - slot_was_set:
+    - result: 2
+  - slot_was_set:
+    - requested_slot: einstieg
+  - intent: query_benitapi
+    entities:
+    - object_type: beruf
+  - slot_was_set:
+    - object_type: beruf
+  - action: action_search_database
+  - slot_was_set:
+    - attribute: null
+  - action: utter_back

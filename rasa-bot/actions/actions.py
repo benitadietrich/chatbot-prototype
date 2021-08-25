@@ -159,7 +159,8 @@ class ValidateGeneralForm(FormValidationAction):
             currentResult = tracker.get_slot('result')
 
             if intent == "accept" and not name_of_slot == "ratgeber" and not name_of_slot == "einstieg":
-                dispatcher.utter_message(response="utter_"+name_of_slot+"_good")
+                dispatcher.utter_message(
+                    response="utter_"+name_of_slot+"_good")
                 return {"result": currentResult-1}
             else:
                 dispatcher.utter_message(
@@ -236,14 +237,37 @@ class ActionSearchDatabase(Action):
 
         object_type = tracker.get_slot('object_type')
         attribute = tracker.get_slot('attribute')
+        specific_info = tracker.get_slot('specific_info')
 
         try:
-            attribute
-        except NameError:
-            print("not defined")
+            data[object_type]['template']
+        except KeyError:
+            if not object_type == "studiengang" and not attribute is None:
+                if specific_info is None:
+                    li = [str(item) for item in data[object_type][attribute]]
+                    dispatcher.utter_message(
+                        response="utter_"+object_type+"_"+attribute, values=' '.join(li))
+                else:
+                    li = [str(item) for item in data[object_type][attribute]]
+                    print("checking li", li)
+                    if specific_info in li:
+                        dispatcher.utter_message(response="utter_affirm")
+                    else:
+                        dispatcher.utter_message(response="utter_decline")
+        except TypeError:
+            if attribute is None:
+                li = [item.get('id') for item in data[object_type]]
+                print(li)
+                dispatcher.utter_message(
+                    response="utter_studiengang", values=' '.join(li))
+            elif not specific_info is None:
+                r = data[object_type][attribute][specific_info]
+                dispatcher.utter_message(
+                    response="utter_studiengang_"+specific_info, info=attribute, values=r)
         else:
             dispatcher.utter_message(response=(data[object_type]['template']))
-            return[]
+
+        return[SlotSet("attribute", None)]
 
 
 class MyKnowledgeBaseAction(ActionQueryKnowledgeBase):
