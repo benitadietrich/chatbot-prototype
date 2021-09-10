@@ -68,6 +68,9 @@ slots:
     type: any
     influence_conversation: false
 responses:
+  utter_default:
+  - text: Entschuldigung, das habe ich leider nicht verstanden.
+  - text: Das kann ich leider nicht beantworten
   utter_start:
   - text: Hey, ich bin Sally! Ich bin ein Bot der DHBW Stuttgart Campus Horb und bin dazu da, dich bei deiner Studienentscheidung zu unterstützen.
   utter_functions:

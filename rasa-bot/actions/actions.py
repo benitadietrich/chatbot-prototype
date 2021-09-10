@@ -160,11 +160,11 @@ class ValidateGeneralForm(FormValidationAction):
 
             if intent == "accept" and not name_of_slot == "ratgeber" and not name_of_slot == "einstieg":
                 dispatcher.utter_message(
-                    response="utter_"+name_of_slot+"_good")
-                return {"result": currentResult-1}
+                    response="utter_"+name_of_slot+"_bad")
+                return {"result": currentResult}
             else:
                 dispatcher.utter_message(
-                    response="utter_"+name_of_slot+"_bad")
+                    response="utter_"+name_of_slot+"_good")
                 return {"result": currentResult+1}
 
         return validate_slot
@@ -194,10 +194,10 @@ class ActionResult(Action):
         dispatcher.utter_message(
             "Du hast " + str(result)+" von 10 Punkten erreicht")
 
-        if result >= 7:
+        if result >= 5:
             message = "Du scheinst viele Fähigkeiten zu besitzen die für ein duales Studium wichtig sind, ein Duales Studium scheint für dich geeignet zu sein."
             quality = "good"
-        elif result < 7 and result >= 5:
+        elif result < 5 and result >= 3:
             message = "Du besitzt schon einige Fähigkeiten zu besitzen, die es für ein duales Studium braucht. Allerdings gibt es auch einige Themenbereiche, bei denen du dich verbessern könntest."
             quality = "medium"
         else:
