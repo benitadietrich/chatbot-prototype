@@ -247,6 +247,7 @@ class ActionResetAllSlots(Action):
 
 
         return[SlotSet("grades",None),SlotSet("ratgeber", None), SlotSet("exams", None), SlotSet("einstieg", None), SlotSet("theory", None), SlotSet("wissenschaftlich",None), SlotSet("result", 0)] 
+
 class ActionSearchDatabase(Action):
 
     def name(self) -> Text:
