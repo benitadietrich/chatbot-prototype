@@ -268,5 +268,3 @@ class ActionSearchDatabase(Action):
             dispatcher.utter_message(response=(data[object_type]['template']))
 
         return[SlotSet("attribute", None)]
-
-
