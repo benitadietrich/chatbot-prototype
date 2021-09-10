@@ -22,6 +22,7 @@ intents:
 - ask_result_eignung_good
 - ask_result_eignung_bad
 - query_knowledge_base
+
 entities:
 - attribute
 - mention
@@ -210,6 +211,7 @@ responses:
   - text: Du kannst {values} studieren.
   - text: Es gibt die Studiengänge {values}.
 actions:
+- action_reset_all_slots
 - action_ask
 - action_query_knowledge_base
 - action_result
@@ -240,6 +242,8 @@ actions:
 - utter_studiengang_richtungen
 - utter_submit
 - validate_general_form
+- action_ask_result
+- action_reset_all_slots
 forms:
   general_form:
     ignored_intents:

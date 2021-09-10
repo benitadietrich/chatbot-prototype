@@ -236,7 +236,17 @@ class ActionAskResult(Action):
         dispatcher.utter_message(response="utter_result_"+slot)
         return[]
 
+class ActionResetAllSlots(Action):
 
+    def name(self) -> Text:
+        return "action_reset_all_slots"
+
+    async def run(
+        self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+
+        return[SlotSet("grades",None),SlotSet("ratgeber", None), SlotSet("exams", None), SlotSet("einstieg", None), SlotSet("theory", None), SlotSet("wissenschaftlich",None), SlotSet("result", 0)] 
 class ActionSearchDatabase(Action):
 
     def name(self) -> Text:
