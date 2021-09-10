@@ -158,14 +158,14 @@ class ValidateGeneralForm(FormValidationAction):
             intent = tracker.latest_message['intent'].get('name')
             currentResult = tracker.get_slot('result')
 
-            if intent == "accept" and not name_of_slot == "ratgeber" and not name_of_slot == "einstieg":
-                dispatcher.utter_message(
-                    response="utter_"+name_of_slot+"_bad")
-                return {"result": currentResult}
-            else:
+            if intent == "affirm" and not name_of_slot == "ratgeber" and not name_of_slot == "einstieg":
                 dispatcher.utter_message(
                     response="utter_"+name_of_slot+"_good")
                 return {"result": currentResult+1}
+            else:
+                dispatcher.utter_message(
+                    response="utter_"+name_of_slot+"_bad")
+                return {"result": currentResult-1}
 
         return validate_slot
 
@@ -192,7 +192,7 @@ class ActionResult(Action):
         quality = ""
 
         dispatcher.utter_message(
-            "Du hast " + str(result)+" von 10 Punkten erreicht")
+            "Du hast " + str(result)+" von 6 Punkten erreicht")
 
         if result >= 5:
             message = "Du scheinst viele Fähigkeiten zu besitzen die für ein duales Studium wichtig sind, ein Duales Studium scheint für dich geeignet zu sein."

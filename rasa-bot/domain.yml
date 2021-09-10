@@ -211,39 +211,39 @@ responses:
   - text: Du kannst {values} studieren.
   - text: Es gibt die Studiengänge {values}.
 actions:
-- action_reset_all_slots
-- action_ask
-- action_query_knowledge_base
-- action_result
-- action_search_database
-- utter_affirm
-- utter_ask_continue
-- utter_back
-- utter_berufsleben
-- utter_bewerbung_eigenschaften
-- utter_bewerbung_noten
-- utter_decline
-- utter_did_that_help
-- utter_functions
-- utter_go
-- utter_goodbye
-- utter_greet
-- utter_happy
-- utter_help
-- utter_iamabot
-- utter_informationen_ablauf
-- utter_informationen_dauer
-- utter_informationen_semester
-- utter_next
-- utter_quality_bad
-- utter_quality_good
-- utter_start
-- utter_studiengang_abschluss
-- utter_studiengang_richtungen
-- utter_submit
-- validate_general_form
-- action_ask_result
-- action_reset_all_slots
+  - action_ask
+  - action_query_knowledge_base
+  - action_result
+  - action_search_database
+  - utter_affirm
+  - utter_ask_continue
+  - utter_back
+  - utter_berufsleben
+  - utter_bewerbung_eigenschaften
+  - utter_bewerbung_noten
+  - utter_decline
+  - utter_did_that_help
+  - utter_functions
+  - utter_go
+  - utter_goodbye
+  - utter_greet
+  - utter_happy
+  - utter_help
+  - utter_iamabot
+  - utter_informationen_ablauf
+  - utter_informationen_dauer
+  - utter_informationen_semester
+  - utter_next
+  - utter_quality_bad
+  - utter_quality_good
+  - utter_start
+  - utter_studiengang_abschluss
+  - utter_studiengang_richtungen
+  - utter_submit
+  - validate_general_form
+  - action_ask_result
+  - action_reset_all_slots
+
 forms:
   general_form:
     ignored_intents:
