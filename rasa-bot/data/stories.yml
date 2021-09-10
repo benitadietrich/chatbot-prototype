@@ -181,10 +181,8 @@ stories:
   - action: utter_back
 
 - story: question in between
-  condition:
-  # Condition that form is active.
-  - active_loop: general_form
   steps:
+  - active_loop: general_form
   # This unhappy path handles the case of an intent `chitchat`.
   - intent: query_benitapi
     entities:
