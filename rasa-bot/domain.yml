@@ -168,11 +168,11 @@ responses:
   utter_decline:
   - text: Nein
   - text: Nicht ganz
-  utter_quality_good:
+  utter_result_good:
   - text: Dein Ergebnis ist eine gute Voraussetzung für das duale Studium.
   - text: Das bedeutet, dass du für ein duales Studium geeignet bist.
   - text: Ein duales Studium könnte das richtige für dich sein.
-  utter_quality_bad:
+  utter_result_bad:
   - text: Vielleicht solltest du zunächst ein Beratungsgespräch in Betracht ziehen
   - text: Um ein duales Studium erfolgreich abzuschließen, musst du einige deiner Ansichten verbessern.
   utter_inform:

@@ -12,23 +12,6 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
-- rule: question in between
-  condition:
-  # Condition that form is active.
-  - active_loop: general_form
-  steps:
-  # This unhappy path handles the case of an intent `chitchat`.
-  - intent: query_benitapi
-    entities:
-    - object_type: beruf
-  - slot_was_set:
-    - object_type: beruf
-  - action: action_search_database
-  # Return to form after handling the `chitchat` intent
-  - action: utter_back
-  - action: general_form
-  - active_loop: general_form
-
 - rule: Handle question
   steps:
   - intent: query_benitapi
@@ -55,6 +38,7 @@ rules:
     - requested_slot: null
   - action: utter_submit
   - action: action_result
+  - action: action_reset_all_slots
 
 - rule: respond to questions
   steps:

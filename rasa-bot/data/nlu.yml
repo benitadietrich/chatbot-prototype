@@ -99,6 +99,10 @@ nlu:
     - Wofür brauch ich das?
     - Hm wozu brauche ich das?
     - Und wozu ist das relevant?
+- intent: ask_result
+  examples: |
+    - Was bedeutet das?
+    - Was bedeutet das Ergbenis?
 - intent: ask_result_quality_good
   examples: |
     - Ist das ein gutes Ergebnis?

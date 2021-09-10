@@ -222,6 +222,20 @@ class ActionAsk(Action):
         dispatcher.utter_message(response="utter_"+context)
         return[]
 
+class ActionAskResult(Action):
+
+    def name(self) -> Text:
+        return "action_ask_result"
+
+    async def run(
+        self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        slot = tracker.get_slot('quality')
+
+        dispatcher.utter_message(response="utter_result_"+slot)
+        return[]
+
 
 class ActionSearchDatabase(Action):
 
