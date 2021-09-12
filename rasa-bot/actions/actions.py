@@ -158,7 +158,7 @@ class ValidateGeneralForm(FormValidationAction):
             intent = tracker.latest_message['intent'].get('name')
             currentResult = tracker.get_slot('result')
 
-            if intent == "affirm" and not name_of_slot == "ratgeber" and not name_of_slot == "einstieg":
+            if intent == "affirm" and (not name_of_slot == "ratgeber" or not name_of_slot == "einstieg"):
                 dispatcher.utter_message(
                     response="utter_"+name_of_slot+"_bad")
                 return {"result": currentResult}
