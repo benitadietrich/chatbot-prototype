@@ -9,5 +9,5 @@ services:
     command:
       - run
   app:
-    image: benitadietrich/chatbot_prototype:rasa
+    image: benitadietrich/chatbot_prototype:sally
     expose: [5055]

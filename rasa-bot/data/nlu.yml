@@ -21,6 +21,7 @@ nlu:
     - Hört sich gut an
     - Korrekt
     - Ok
+    - Okay
     - Ja, ich denke schon dass die Noten eine gewisse Aussagekraft haben.
 - intent: decline
   examples: |
@@ -111,6 +112,14 @@ nlu:
   examples: |
     - Ist das ein schlechtes Ergebnis?
     - Also bin ich zu faul?
+- intent: ask_name
+  examples: |
+    - Wie heißt du?
+    - Wie ist dein Name?
+- intent: wanna_study
+  examples: |
+    - Ich möchte studieren.
+    - Ich möchte [Informatik]{"entity":"object_type","value": "Informatik"} studieren.
 - intent: query_benitapi
   examples: |
     - Lernt man im dualen Studium denn nur Sachen für den späteren [Beruf]{"entity": "attribute", "value": "beruf"}

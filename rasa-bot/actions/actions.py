@@ -160,12 +160,12 @@ class ValidateGeneralForm(FormValidationAction):
 
             if intent == "affirm" and not name_of_slot == "ratgeber" and not name_of_slot == "einstieg":
                 dispatcher.utter_message(
-                    response="utter_"+name_of_slot+"_good")
-                return {"result": currentResult+1}
+                    response="utter_"+name_of_slot+"_bad")
+                return {"result": currentResult}
             else:
                 dispatcher.utter_message(
-                    response="utter_"+name_of_slot+"_bad")
-                return {"result": currentResult-1}
+                    response="utter_"+name_of_slot+"_good")
+                return {"result": currentResult+1}
 
         return validate_slot
 
@@ -236,6 +236,7 @@ class ActionAskResult(Action):
         dispatcher.utter_message(response="utter_result_"+slot)
         return[]
 
+
 class ActionResetAllSlots(Action):
 
     def name(self) -> Text:
@@ -247,6 +248,24 @@ class ActionResetAllSlots(Action):
 
 
         return[SlotSet("grades",None),SlotSet("ratgeber", None), SlotSet("exams", None), SlotSet("einstieg", None), SlotSet("theory", None), SlotSet("wissenschaftlich",None), SlotSet("result", 0)] 
+
+class ActionWannaStudy(Action):
+
+    def name(self) -> Text:
+	return "action_wanna_study"
+
+    async def run(
+	self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+	studiengang = tracker.get_slot('object_type')
+
+	if studiengang is None:
+		dispatcher.utter_message(response = "utter_ask_studiengang")
+	else:
+		dispatcher.utter_message(response = "utter_"+studiengang)
+
+
 
 class ActionSearchDatabase(Action):
 

@@ -1,0 +1,66 @@
+version: "2.0"
+
+rules:
+
+- rule: start the conversation
+  steps:
+  - intent: greet
+  - action: utter_start
+  - action: utter_functions
+- rule: goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: handle questions in between
+  condition:
+  # Condition that form is active.
+  - active_loop: general_form
+  steps:
+  # This unhappy path handles the case of an intent `chitchat`.
+  - intent: query_benitapi
+  - action: action_search_database
+  # Return to form after handling the `chitchat` intent
+  - action: restaurant_form
+  - active_loop: restaurant_form
+
+- rule: Handle question
+  steps:
+  - intent: query_benitapi
+    entities:
+    - object_type: beruf
+  - slot_was_set:
+    - object_type: beruf
+  - action: action_search_database
+condition:
+  # Condition that form is active.
+  - active_loop: restaurant_form
+  steps:
+  # This unhappy path handles the case of an intent `chitchat`.
+  - intent: chitchat
+  - action: utter_chitchat
+  # Return to form after handling the `chitchat` intent
+  - action: restaurant_form
+  - active_loop: restaurant_form
+- rule: Activate form
+  steps:
+  - intent: start_form
+  - action: utter_go
+  - action: general_form
+  - active_loop: general_form
+
+- rule: Submit form
+  condition:
+  - active_loop: general_form
+  steps:
+  - action: general_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: action_result
+
+- rule: respond to questions
+  steps:
+  - intent: inform
+  - action: utter_inform

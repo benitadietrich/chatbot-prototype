@@ -3,6 +3,8 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
 intents:
+- wanna_study
+- ask_name
 - affirm
 - decline
 - start_form
@@ -210,6 +212,10 @@ responses:
   utter_studiengang:
   - text: Du kannst {values} studieren.
   - text: Es gibt die Studiengänge {values}.
+  utter_name:
+  - Ich heiße Sally.
+  - Mein Name ist Sally.
+  - Ich bin Sally.
 actions:
   - action_ask
   - action_query_knowledge_base
@@ -243,6 +249,7 @@ actions:
   - validate_general_form
   - action_ask_result
   - action_reset_all_slots
+  - action_wanna_study
 
 forms:
   general_form:
