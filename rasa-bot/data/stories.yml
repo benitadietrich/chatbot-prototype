@@ -6,7 +6,7 @@ stories:
   steps:
   - intent: wanna_study
   - action: action_wanna_study
-  - intent: query_benitapi
+  - intent: wanna_study
     entities:
     - object_type: "studiengang"
   - slot_was_set:
