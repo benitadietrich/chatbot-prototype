@@ -8,6 +8,10 @@ stories:
   - action: action_wanna_study
   - intent: query_benitapi
     entities:
+    - object_type: "studiengang"
+  - slot_was_set:
+    - object_type: "studiengang"
+  - action: action_wanna_study
 
 
 - story: knowledge base happy path

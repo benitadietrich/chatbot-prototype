@@ -2,11 +2,17 @@ version: "2.0"
 
 rules:
 
+- rule: ask name
+  steps:
+  - intent: ask_name
+  - action: utter_name
+
 - rule: start the conversation
   steps:
   - intent: greet
   - action: utter_start
   - action: utter_functions
+
 - rule: goodbye
   steps:
   - intent: goodbye

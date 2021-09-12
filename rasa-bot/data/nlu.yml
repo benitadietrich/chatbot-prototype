@@ -120,6 +120,12 @@ nlu:
   examples: |
     - Ich möchte studieren.
     - Ich möchte [Informatik]{"entity":"object_type","value": "Informatik"} studieren.
+    - Ich interessiere mich für [Informatik]{"entity":"object_type","value": "Informatik"}
+    - Ich interessiere mich für [Maschinenbau]{"entity":"object_type","value": "Informatik"}
+    - [Informatik]{"entity":"object_type","value": "Informatik"} finde ich sehr interessant
+    - [Mechatronik]{"entity":"object_type","value": "Informatik"} finde ich gut
+    - [Informatik]{"entity":"object_type","value": "Informatik"}
+    - [Maschinenbau]{"entity":"object_type","value": "Informatik"}
 - intent: query_benitapi
   examples: |
     - Lernt man im dualen Studium denn nur Sachen für den späteren [Beruf]{"entity": "attribute", "value": "beruf"}

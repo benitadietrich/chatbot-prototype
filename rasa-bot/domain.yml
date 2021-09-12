@@ -216,8 +216,31 @@ responses:
   - Ich heiße Sally.
   - Mein Name ist Sally.
   - Ich bin Sally.
+  utter_ask_studiengang:
+  - Gibt es denn schon einen Studiengang für den du dich interessierst?
+  - Für welchen Studiengang interessierst du dich?
+  - Welcher Studiengang interessiert dich besonders?
+  utter_informatik:
+  - Hauptaufgabe der Informatiker ist das Verstehen und Übertragen von Vorgängen der realen Welt auf IT-Systeme, indem sie Modelle von Vorgängen erstellen und diese dann in Softwaresysteme abbilden. Neben der Erstellung von mathematischen, logischen, technischen oder betriebswirtschaftlichen Modellen müssen sich Informatiker ergänzendes Fachwissen aus dem entsprechenden Anwendungsgebiet (z.B. der Medizin, den digitalen Medien oder den Ingenieurwissenschaften) erarbeiten. Daher benötigen Informatiker neben dem technischen Fachwissen auch sehr gute Fähigkeiten zur interdisziplinären Kommunikation und Kooperation. Mehr findest du unter https://www.dhbw-stuttgart.de/horb/studium/bachelor-studienangebot/informatik/
+  utter_mechatronik:
+  - Die Mechatronik stellt die Verbindung zwischen den klassischen Studienrichtungen Maschinenbau, Elektrotechnik und Informationstechnik dar. Durch die Integration dieses Wissens wird fachübergreifendes Denken gefördert und es werden innovative Lösungen für Probleme gefunden. mehr findest du unter https://www.dhbw-stuttgart.de/horb/studium/bachelor-studienangebot/mechatronik/
+  utter_elektrotechnik:
+  - Der Elektroingenieur/in arbeiten bevorzugt mit mathematischen Modellen, um technische Prozesse zu beschreiben. Auf der Basis dieser Modelle können sie dann gezielt in technische Prozesse eingreifen und diese elektronisch mit Hardware und Software steuern. Für ein erfolgreiches Studium und Berufsleben ist ein hohes Maß an Leistungsbereitschaft und Teamfähigkeit Voraussetzung. Mehr findest du unter https://www.dhbw-stuttgart.de/horb/studium/bachelor-studienangebot/elektrotechnik/
+  utter_wirtschaftsingenieurwesen:
+  - Der Studiengang Wirtschaftsingenieurwesen ermöglicht es, schon im Studium zu organisieren und unternehmerisch tätig zu werden, sich mit Menschen und Dingen zu beschäftigen sowie betriebswirtschaftliche Zusammenhänge zu verstehen und zu bearbeiten. Gleichzeitig können naturwissenschaftlich-mathematisches und technisches Interesse verwirklicht werden. Diese Kombination befähigt für vielfältige Aufgabenbereiche in einem technisch geprägten Umfeld wie zum Beispiel der Automobilindustrie, im Maschinenbau, in der Medizintechnik oder in Softwareunternehmen, aber natürlich auch in anderen technischen Bereichen und Industrieunternehmen. Mehr findest du unter https://www.dhbw-stuttgart.de/horb/studium/bachelor-studienangebot/wirtschaftsingenieurwesen/
+  utter_maschinenbau:
+  - Die Studierenden lernen im Team kreativ zusammenzuarbeiten, die maschinentechnischen Grundlagen sicher anzuwenden und Software-Tools zielgerichtet einzusetzen. Nach dem Studium können sie Produkte (weiter-)entwickeln sowie Maschinen und Anlagen planen und entwerfen. Mehr findest du unter https://www.dhbw-stuttgart.de/horb/studium/bachelor-studienangebot/maschinenbau/
+
 actions:
+  - utter_informatik
+  - utter_mechatronik
+  - utter_elektrotechnik
+  - utter_wirtschaftsingenieurwesen
+  - utter_maschinenbau
   - action_ask
+  - action_wanna_study
+  - utter_name
+  - utter_ask_studiengang
   - action_query_knowledge_base
   - action_result
   - action_search_database
@@ -249,7 +272,6 @@ actions:
   - validate_general_form
   - action_ask_result
   - action_reset_all_slots
-  - action_wanna_study
 
 forms:
   general_form:

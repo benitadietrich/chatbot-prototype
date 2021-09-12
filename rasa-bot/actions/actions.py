@@ -252,19 +252,18 @@ class ActionResetAllSlots(Action):
 class ActionWannaStudy(Action):
 
     def name(self) -> Text:
-	return "action_wanna_study"
+	    return "action_wanna_study"
 
     async def run(
 	self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
 
-	studiengang = tracker.get_slot('object_type')
+    	studiengang = tracker.get_slot('object_type')
 
-	if studiengang is None:
-		dispatcher.utter_message(response = "utter_ask_studiengang")
-	else:
-		dispatcher.utter_message(response = "utter_"+studiengang)
-
+        if studiengang is None:
+		    dispatcher.utter_message(response = "utter_ask_studiengang")
+        else:
+		    dispatcher.utter_message(response = "utter_"+studiengang)
 
 
 class ActionSearchDatabase(Action):
